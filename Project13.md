@@ -55,11 +55,11 @@ We will be using a MySQL role developed by geerlingguy.
 
 `ansible-galaxy install geerlingguy.mysql`
 
-![Ansible Mysql Download](./images/ansible-mysql.PNG)
+![Ansible Mysql Download](./image/ansible-mysql.PNG)
 
 `mv geerlingguy.mysql/ mysql`
 
-![Mysql folder Name Change](./images/change-to-mysql.PNG)
+![Mysql folder Name Change](./image/change-to-mysql.PNG)
 
 #### LOAD BALANCER ROLES
 
@@ -74,13 +74,13 @@ Download Nginx:
 
 `ansible-galaxy install geerlingguy.nginx`
 
-![Nginx Download](./images/nginx-dwnld.PNG)
+![Nginx Download](./image/nginx-dwnld.PNG)
 
 Download Apache:
 
 `ansible-galaxy install geerlingguy.apache`
 
-![Apache Download](./images/apache-dwnld.PNG)
+![Apache Download](./image/apache-dwnld.PNG)
 
 Change the names of the downloaded apache and nginx folder:
 
@@ -92,35 +92,35 @@ Change the names of the downloaded apache and nginx folder:
 
 - Go to the main.yml file inside the Nginx folder and copy the uat-webserver ip address inside the inventory to it.
 
-![Copy Inventory/Uat to Nginx/Defaults/Main](./images/cp-inven-uat-nginx-defaults-main.PNG)
+![Copy Inventory/Uat to Nginx/Defaults/Main](./image/cp-inven-uat-nginx-defaults-main.PNG)
 
 - In the Nginx Defaults Main.yml file, uncomment nginx_extra_http_options:
 
-![Task above ](./images/nginx-http-uncomment.PNG)
+![Task above ](./image/nginx-http-uncomment.PNG)
 
-![Task Main 1](./images/task-main-1.PNG)
+![Task Main 1](./image/task-main-1.PNG)
 
-![Task Main 2](./images/task-main-2.PNG)
+![Task Main 2](./image/task-main-2.PNG)
 
 - Make changes to the setup-RedHat.yml file in nginx/tasks:
 
-![Set Redhat Changes](./images/nginx-redhat-fileupdate.PNG)
+![Set Redhat Changes](./image/nginx-redhat-fileupdate.PNG)
 
 In the apache defaults main.yml file, add the uat web servers
 
-![Adding Webservers to main file](./images/uat-webservers.PNG)
+![Adding Webservers to main file](./image/uat-webservers.PNG)
 
 - Make changes to the setup-RedHat.yml file in apache/tasks
 
-![Set Redhat Changes](./images/apache-task-set-redhat.PNG)
+![Set Redhat Changes](./image/apache-task-set-redhat.PNG)
 
 - In apache defaults main.yml add the load balancer name under apache_vhosts:
 
-![Apache LoadBalancer Update](./images/apache-vhosts-loadbal.PNG)
+![Apache LoadBalancer Update](./image/apache-vhosts-loadbal.PNG)
 
 - Update the Nginx task main.yml with the webserver /etc/hosts info:
 
-![Nginx EtcHosts Update](./images/nginx-etc-hosts.PNG)
+![Nginx EtcHosts Update](./image/nginx-etc-hosts.PNG)
 
 - Important Hints:
 
@@ -132,77 +132,77 @@ Set both values to false like this enable_nginx_lb: false and enable_apache_lb: 
 
 Declare another variable in both roles load_balancer_is_required and set its value to false as well
 
-![Apacge Enable](./images/apache-enable-load-bal.PNG)
+![Apacge Enable](./image/apache-enable-load-bal.PNG)
 
-![Nginx Enable](./images/nginx-enable-load-bal.PNG)
+![Nginx Enable](./image/nginx-enable-load-bal.PNG)
 
 Update both assignment and site.yml files respectively:
 
 Create a loadbalancers.yml file in the static-assignments folder:
 
-![Loadbalancer file](./images/lb-file.PNG)
+![Loadbalancer file](./image/lb-file.PNG)
 
 Create a db.yml file in the static-assignments folder:
 
-![Database file](./images/db-file.PNG)
+![Database file](./image/db-file.PNG)
 
-![Site file](./images/site-yml-.PNG)
+![Site file](./image/site-yml-.PNG)
 
 
 - Now you can make use of env-vars\uat.yml file to define which loadbalancer to use in UAT environment by setting respective environmental variable to true.
 
 You will activate load balancer, and enable nginx by setting these in the respective environment’s env-vars file:
 
-![Env Uat file](./images/update-envs-uat.PNG)
+![Env Uat file](./image/update-envs-uat.PNG)
 
 - Run the playbook command:
 
 `ansible-playbook -i inventory/uat.yml playbooks/site.yml`
 
-![Playbook Run](./images/ansible-inventory-uat-siteyml.PNG)
+![Playbook Run](./image/ansible-inventory-uat-siteyml.PNG)
 
 - Apache Playbook run output:
 
-![Apache Output](./images/ansible-inventory-uat-siteyml.PNG)
+![Apache Output](./image/ansible-inventory-uat-siteyml.PNG)
 
-![Apache Output](./images/apache-output-2.PNG)
+![Apache Output](./image/apache-output-2.PNG)
 
-![Apache Output](./images/apache-output-3.PNG)
+![Apache Output](./image/apache-output-3.PNG)
 
-![Apache Output](./images/apache-output-4.PNG)
+![Apache Output](./image/apache-output-4.PNG)
 
-![Apache Output](./images/apache-output-5.PNG)
+![Apache Output](./image/apache-output-5.PNG)
 
 - Loadbalancer Playbook run output:
 
-![LoadBalancer Output](./images/lb-output-1.PNG)
+![LoadBalancer Output](./image/lb-output-1.PNG)
 
-![LoadBalancer Output](./images/lb-output-2.PNG)
+![LoadBalancer Output](./image/lb-output-2.PNG)
 
-![LoadBalancer Output](./images/lb-output-3.PNG)
+![LoadBalancer Output](./image/lb-output-3.PNG)
 
-![LoadBalancer Output](./images/lb-output-4.PNG)
+![LoadBalancer Output](./image/lb-output-4.PNG)
 
-![LoadBalancer Output](./images/lb-output-5.PNG)
+![LoadBalancer Output](./image/lb-output-5.PNG)
 
-![LoadBalancer Output](./images/lb-output-5.PNG)
+![LoadBalancer Output](./image/lb-output-5.PNG)
 
-![LoadBalancer Success Output](./images/lb-success-output.PNG)
+![LoadBalancer Success Output](./image/lb-success-output.PNG)
 
 - Folder and Files configuration:
 
-![Apache Enable](./images/apache-enable-load-bal.PNG)
+![Apache Enable](./image/apache-enable-load-bal.PNG)
 
-![Apache Task Folder](./images/apache-task-set-redhat.PNG)
+![Apache Task Folder](./image/apache-task-set-redhat.PNG)
 
-![Apache vhosts](./images/apache-vhosts-loadbal.PNG)
+![Apache vhosts](./image/apache-vhosts-loadbal.PNG)
 
-![Nginx Folder](./images/nginx-dwnld.PNG)
+![Nginx Folder](./image/nginx-dwnld.PNG)
 
-![Nginx Enable](./images/nginx-enable-load-bal.PNG)
+![Nginx Enable](./image/nginx-enable-load-bal.PNG)
 
-![Nginx Etc Hosts](./images/nginx-etc-hosts.PNG)
+![Nginx Etc Hosts](./image/nginx-etc-hosts.PNG)
 
-![Nginx Http](./images/nginx-http-uncomment.PNG)
+![Nginx Http](./image/nginx-http-uncomment.PNG)
 
-![Nginx Redhat](./images/nginx-redhat-fileupdate.PNG)
+![Nginx Redhat](./image/nginx-redhat-fileupdate.PNG)
